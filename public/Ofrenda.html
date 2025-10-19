@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <title>Objetos de ofrenta </title>
+</head>
+<body>
+    
+<canvas id="myCanvas">
+    <!--El elemento HTML canvas se puede utilizar para dibujar gráficos a través de 
+        secuencias de comandos (por lo general JavaScript ).-->
+</canvas>
+
+<!-- Aquí va todo el código de three.js -->
+<!-- script type="importmap" importa las librerías necesarias para three.js-->
+<script type="importmap"> 
+    {
+        "imports":{
+            "three": "./js/three.module.js",
+            "three/OrbitControls": "./js/OrbitControls.js" 
+        }
+}
+</script>
+<script type="module"> 
+//🗃️🗃️ Mandar llamar a la librería
+    import * as THREE from 'three'; 
+    import {OrbitControls} from 'three/OrbitControls';
+    console.log(OrbitControls);
+
+import {RoundedBoxGeometry} from "./js/RoundedBoxGeometry.js"
+
+import ESC01 from "./objetos/Pan.js"
+import ESC02 from "./objetos/Vela.js"
+import ESC03 from "./objetos/Cocacola.js"
+import ESC04 from "./objetos/Taza1.js"
+import ESC05 from "./objetos/Taza2.js"
+import ESC06 from "./objetos/Taza3.js"
+import ESC07 from "./objetos/Florero.js"
+import ESC08 from "./objetos/Florero2.js"
+import ESC09 from "./objetos/Florero3.js"
+import ESC10 from "./objetos/Copal.js"
+import tequila from "./objetos/Tequila.js"
+import retrato1 from "./objetos/Retrato.js"
+import retrato2 from "./objetos/Retrato2.js"
+import retrato3 from "./objetos/Retrato3.js"
+import agua from "./objetos/Agua.js"
+import mandarina from "./objetos/Mandarina.js"
+import MANGO from "./objetos/mangoamarillo.js"
+import MANZANA from "./objetos/Manzana.js"
+import CUENCO from "./objetos/Cuenco.js"
+import Pozole1 from "./objetos/pozole.js"
+import PisosOfrenda from "./objetos/pisosofrenda.js"
+import Vinyl from "./objetos/cajavinyl.js"
+import catrin from "./objetos/catrin.js"
+import flor from "./objetos/flor.js"
+import arcoflores from "./objetos/arcoflores.js"
+import vallas from "./objetos/vallas.js"
+import farol from "./objetos/farol.js"
+import farolgrande from "./objetos/farol2.js"
+import catrina from "./objetos/catrina.js"
+import whiskey from "./objetos/Wis.js"
+import Aguan from "./objetos/Vaso.js"
+import Micro from "./objetos/Microfono.js"
+import Caballo from "./objetos/Caballito.js"
+import Crucifijo from "./objetos/Cruz.js"
+import Sonidero from "./objetos/Grabadora.js"
+import tapeteaserrin from "./objetos/tapeteaserrin.js"
+import base from "./objetos/base.js"
+import velasclonadas from "./objetos/velasgrupo.js"
+import cartel from "./objetos/cartel.js"
+
+//🕹️🕹️ Renderer - Realiza una conexión entre el código y el canvas
+    var renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('myCanvas'), antialias: true,
+    });
+    renderer.setPixelRatio(window.decivePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x241440);
+
+
+// 🎬 Creando nueva escena - Es el espacio donde se colocan los objetos
+    var scene = new THREE.Scene();
+
+//🎥🎥 Agregar una cámara de perspectiva
+    var camera = new THREE.PerspectiveCamera(70,window.innerWidth / window.innerHeight,0.1,2000
+      );
+    scene.add(camera);
+
+    //Settings de la cámara
+    camera.position.set(0, 120, 400);
+
+    // Añadiendo los OrbitControls
+    var controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+// Espacio para colocar los objetos
+
+//NUEVOS OBJETOS
+const wiskito = whiskey({x:-16, y:71.5, z:-110});
+scene.add(wiskito);
+
+const microfono = Micro({x:50, y:40, z:-115});
+scene.add(microfono);
+
+
+
+const  tequilero = Caballo({x:16, y:69, z:-110});
+scene.add(tequilero);
+
+const  diosito = Crucifijo({x:0, y:75, z:-136});
+scene.add(diosito);
+
+
+
+const  godcina = Sonidero({x:50, y:40, z:-80});
+scene.add(godcina);
+godcina.rotation.set(0,1.57,0);
+
+const  vasodeagua = Aguan({x:-12, y:50, z:-70});
+scene.add(vasodeagua);
+
+
+//TERMINA NUEVOS OBJETOS
+
+//LUCEES
+var light1 = new THREE.AmbientLight(0xB08F63, 0.8);
+scene.add(light1);
+
+var dl01 = new THREE.DirectionalLight(0xCDA6FF, 0.4);
+dl01.position.set(0, 150, 200);
+scene.add(dl01);
+
+var sl01 = new THREE.SpotLight(0xFFF8ED, 1.5, 400, 0.6, 0.8, 2);
+sl01.position.set(0, 100, -300);
+scene.add(sl01);
+
+
+var sl02 = new THREE.SpotLight(0xffa500, 1.2, 900,0.9, 1.3, 1);
+sl02.position.set(-80, 300, 100);
+scene.add(sl02);
+
+
+//BASE ALTAR
+const BASE1 = base({x:0, y:0, z: 0});
+scene.add(BASE1);
+
+
+const pan = ESC01({x:-20, y:39, z:-30});
+scene.add(pan);
+
+
+const vela = ESC02({x:-55, y:40.5, z:-25});
+scene.add(vela);
+
+
+const coca = ESC03({x:-30, y:36, z:-40});
+scene.add(coca);
+
+
+const taza = ESC04({x:30, y:47, z:-45});
+scene.add(taza);
+
+const taza2 = ESC05({x:10, y:47, z:-45});
+scene.add(taza2);
+
+const taza3 = ESC06({x:-10, y:47, z:-45});
+scene.add(taza3);
+
+const florero1 = ESC07({x:-80, y:10, z:-10});
+scene.add(florero1);
+
+const florero2 = ESC08({x:80, y:10, z:-10});
+scene.add(florero2);
+
+
+const copal = ESC10({x:50, y:38, z:-40});
+scene.add(copal);
+
+const tequilita = tequila({x:5, y:50, z:-85});
+scene.add(tequilita);
+
+const retratojose = retrato1({x:0, y:75, z:-120});
+scene.add(retratojose);
+
+const retratojuan = retrato2({x:-22, y:55, z:-85});
+scene.add(retratojuan);
+
+const retratovale = retrato3({x:35, y:40, z:-35});
+scene.add(retratovale);
+
+const Agua = agua ({x:0,y:44.5,z:-30});
+scene.add(Agua);
+
+const Mango = MANGO ({x:-37,y:60,z:-70});
+scene.add(Mango);
+
+const Mandarina = mandarina ({x:-35,y:43,z:-70});
+scene.add(Mandarina);
+Mandarina.scale.set(1,.8,1)
+
+const Manzana = MANZANA ({x:-32,y:60,z:-70});
+scene.add(Manzana);
+
+const pisosofrenda = PisosOfrenda ({x:0,y:25,z:-60});
+scene.add(pisosofrenda);
+pisosofrenda.rotation.set(0,1.57,0);
+pisosofrenda.scale.set(2,2,2)
+
+const pozole = Pozole1 ({x:-30,y:30,z:-30});
+scene.add(pozole);
+
+const DiscoVinyl = Vinyl ({x:0,y:28,z:-80});
+scene.add(DiscoVinyl);
+DiscoVinyl.scale.set(2,2,2);
+
+const Cuenco = CUENCO ({x:-35,y:46,z:-70});
+scene.add(Cuenco);
+
+const Catrin = catrin ({x:40,y:105,z:-100});
+scene.add(Catrin);
+Catrin.scale.set(2,2,2);
+
+const Flor = flor ({x:-28,y:14,z:125});
+scene.add(Flor);
+Flor.scale.set(0.7,0.7,0.7);
+
+const velasclonadas01 = velasclonadas({x:0, y:10, z: 0});
+scene.add(velasclonadas01)
+
+const ARCOFLORES = arcoflores ({x:-60,y:18,z:-150});
+scene.add(ARCOFLORES);
+ARCOFLORES.scale.set(0.7,0.8,0.7);
+
+const ARCOFLORES2 = arcoflores ({x:-30,y:16,z:130});
+scene.add(ARCOFLORES2);
+ARCOFLORES2.scale.set(0.35,0.3,0.3);
+
+//Tapete aserrín 
+const TAPETEASERRIN = tapeteaserrin({x:-180,y:105,z:-100});
+scene.add(TAPETEASERRIN);
+TAPETEASERRIN.position.set(0,0,2);
+
+//VALLAS EXTERIORES
+const VALLAS = vallas ({x:-160,y:25,z:300});
+scene.add(VALLAS);
+VALLAS.scale.set(1,1,1);
+
+//FAROLES CON LUCES
+const FAROL = farol ({x:-130,y:150,z:-140});
+scene.add(FAROL);
+FAROL.scale.set(3,2.6,2);
+
+const FAROL2 = farol ({x:-130,y:150,z:280});
+scene.add(FAROL2);
+FAROL2.scale.set(3,2.6,2);
+
+const FAROLGRANDE = farolgrande ({x:-130,y:150,z:175});
+scene.add(FAROLGRANDE);
+FAROLGRANDE.scale.set(2.4,2.6,2);
+FAROLGRANDE.rotation.set(0,1.57,0);
+
+const FAROLGRANDE2 = farolgrande ({x:140,y:150,z:175});
+scene.add(FAROLGRANDE2);
+FAROLGRANDE2.scale.set(2.4,2.6,2);
+FAROLGRANDE2.rotation.set(0,1.57,0);
+//
+const CATRINA = catrina ({x:-180,y:105,z:-100});
+scene.add(CATRINA);
+CATRINA.scale.set(2,2,2);
+
+const CARTEL = cartel ({x:-40,y:15,z:235});
+scene.add(CARTEL);
+
+
+
+//Sombras
+
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+//sombra de la luz
+sl01.castShadow = true;
+sl01.shadow.mapSize.width = 1024;
+sl01.shadow.mapSize.height = 1024;
+sl01.shadow.camera.near = 10;
+sl01.shadow.camera.far = 200;
+
+
+
+
+      
+
+//🎰🎰Rendering y animación
+    requestAnimationFrame(render);
+    function render() {
+
+    //🪄🪄 Animación - 
+
+    //🎮🎮Actualización del OrbitControls para generar la suavidad de movimiento
+    controls.update();
+
+    //Llamado para renderizar y volver a llamar a la misma función (render)
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+    }
+</script>
+</body>
+</html>
